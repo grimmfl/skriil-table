@@ -6,7 +6,7 @@ import { SkriilTableComponent } from './skriil-table/skriil-table.component';
 import { SkriiLFormFieldDirective } from './skriil-table/directives/skriil-form-field.directive';
 import { SkriilFormFieldComponent } from './skriil-table/skriil-form-field/skriil-form-field.component';
 import { SkriilFormDirective } from './skriil-table/directives/skriil-form.directive';
-import { SkriilTableItemDirective } from './skriil-table/directives/skriil-table-item.directive';
+import { SkriilTableColumnDirective } from './skriil-table/directives/skriil-table-column.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { SkriilTableItemDirective } from './skriil-table/directives/skriil-table
     SkriiLFormFieldDirective,
     SkriilFormFieldComponent,
     SkriilFormDirective,
-    SkriilTableItemDirective,
+    SkriilTableColumnDirective,
   ],
   imports: [
     BrowserModule

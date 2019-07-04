@@ -1,10 +1,10 @@
 <div class="container-fluid mt-3">
   <skriil-table [tableContext]="tableContext">
-    <ng-template let-item>
+    <ng-template skriilTableColumn let-item>
       {{ item.id }}
     </ng-template>
 
-    <ng-template let-item>
+    <ng-template skriilTableColumn let-item>
       {{ item.name }}
     </ng-template>
 

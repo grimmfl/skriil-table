@@ -10,9 +10,6 @@ export class AppComponent {
   public tableContext: SkriilTableContext = {
     showEdit: true,
     tableClass: 'table table-dark',
-    data: [
-      {id: 1, name: 'Herbert'},
-      {id: 2, name: 'Max'}
-    ]
+    service: undefined,
   };
 }
