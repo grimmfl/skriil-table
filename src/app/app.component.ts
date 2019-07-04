@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {SkriilTableContext} from './skriil-table/skriil-table.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'skriil-table';
+  public tableContext: SkriilTableContext = {
+    showEdit: true,
+    tableClass: 'table table-dark',
+    data: [
+      {id: 1, name: 'Herbert'},
+      {id: 2, name: 'Max'}
+    ]
+  };
 }

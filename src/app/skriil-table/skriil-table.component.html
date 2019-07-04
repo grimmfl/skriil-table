@@ -1,0 +1,16 @@
+<div class="row" *ngIf="tableContext">
+  <div [class]="tableContext.showEdit ? 'col-8' : 'col-12'">
+    <table [class]="tableContext.tableClass">
+      <tbody>
+        <tr *ngFor="let item of tableContext.data">
+          <td>
+            <ng-container *ngTemplateOutlet="tableItem; context: {$implicit: item}"></ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="tableContext.showEdit" class="col-4">
+    <ng-container *ngTemplateOutlet="form"></ng-container>
+  </div>
+</div>
