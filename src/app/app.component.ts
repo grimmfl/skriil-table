@@ -11,5 +11,6 @@ export class AppComponent {
     showEdit: true,
     tableClass: 'table table-dark',
     service: undefined,
+    heading: 'Test',
   };
 }

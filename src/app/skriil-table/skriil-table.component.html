@@ -1,21 +1,27 @@
-<div class="row" *ngIf="tableContext">
-  <div [class]="tableContext.showEdit ? 'col-8' : 'col-12'">
-    <table [class]="tableContext.tableClass">
-      <tbody>
-        <tr *ngFor="let item of tableContext.data" (click)="editItem(item)">
+<div *ngIf="tableContext">
+  <h4>
+    {{ tableContext.heading }}
+    <button class="btn btn-outline-primary btn-sm" (click)="addItem()"><i class="fa fa-plus"></i></button>
+  </h4>
+  <div class="row">
+    <div [class]="tableContext.showEdit ? 'col-8' : 'col-12'">
+      <table [class]="tableContext.tableClass">
+        <tbody>
+        <tr *ngFor="let item of items$ | async" (click)="editItem(item)">
           <td *ngFor="let column of tableColumns">
             <ng-container *ngTemplateOutlet="column; context: {$implicit: item}"></ng-container>
           </td>
         </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="tableContext.showEdit && selectedItem" class="col-4">
-    <ng-container *ngTemplateOutlet="form"></ng-container>
-    <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-danger w-25" (click)="dismiss()">Dismiss</button>
-      <button class="btn btn-outline-secondary w-25">Reset</button>
-      <button class="btn btn-outline-primary w-25" (click)="save()">Save</button>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="tableContext.showEdit && selectedItem" class="col-4">
+      <ng-container *ngTemplateOutlet="form"></ng-container>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-danger w-25" (click)="dismiss()">Dismiss</button>
+        <button class="btn btn-outline-secondary w-25">Reset</button>
+        <button class="btn btn-outline-primary w-25" (click)="save()">Save</button>
+      </div>
     </div>
   </div>
 </div>

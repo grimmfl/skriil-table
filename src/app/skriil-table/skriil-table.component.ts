@@ -3,11 +3,16 @@ import {SkriiLFormFieldDirective} from './directives/skriil-form-field.directive
 import {SkriilFormDirective} from './directives/skriil-form.directive';
 import {SkriilTableColumnDirective} from './directives/skriil-table-column.directive';
 import {Services} from '@angular/core/src/view/types';
+import {Observable} from 'rxjs';
+import {FormGroup} from '@angular/forms';
 
 export class SkriilTableContext {
   showEdit = true;
   tableClass = 'table';
   service: any;
+  heading: string;
+  formGroup: FormGroup;
+  formIds: string[];
 }
 
 @Component({
@@ -16,8 +21,9 @@ export class SkriilTableContext {
 })
 export class SkriilTableComponent implements OnInit {
   public tableContext = new SkriilTableContext();
-  public items: any[];
+  public items$: Observable<any[]>;
   public selectedItem: any;
+  public new = false;
 
   @ContentChild(SkriilFormDirective, {read: TemplateRef}) form: SkriilFormDirective;
   @ContentChildren(SkriilTableColumnDirective, {read: TemplateRef}) tableColumns: QueryList<SkriilTableColumnDirective>;
@@ -26,7 +32,7 @@ export class SkriilTableComponent implements OnInit {
   set _tableContext(context: SkriilTableContext | undefined) {
     if (context) {
       this.tableContext = context;
-      this.items = this.tableContext.service.getAll();
+      this.items$ = this.tableContext.service.getAll();
     }
   }
   @Output() selectItem = new EventEmitter<any>();
@@ -43,6 +49,10 @@ export class SkriilTableComponent implements OnInit {
 
   dismiss() {
     this.selectedItem = undefined;
+  }
+
+  addItem() {
+
   }
 
   editItem(item: any) {
